@@ -1,14 +1,16 @@
 #include <iostream>
 #include <queue>
-#include <fstream>
+#include <fstream>          //Here we add the libraries needed for our code to work
 #include <string>
 
 using namespace std;
 
+//Lets create the functions for our operations.
+
 double adding (queue<double>& stack) {
   double sum_stack = 0;
   while (!stack.empty()) {
-      sum_stack += stack.front();
+      sum_stack += stack.front();       //adding loops to summ all numbers in the queque, starting for the FIFO
       stack.pop();
   }
   
@@ -56,7 +58,7 @@ queue<double> stacker (queue<double> stack){
     counter ++;
     cout << "Add number " << counter << " and finish with 0 for an answer \n";
     cin >> new_number;
-    if (new_number==0){
+    if (new_number == 0){
       break;
     }
     else{
@@ -75,7 +77,7 @@ queue<double> empty_stack (queue<double> stack){
   return stack;
 };
 
-void record (double text_line){
+void record (double text_line){                   //AS a strech exercise, this will add the result into a text file. Can be use for history
   auto str = to_string(text_line);
   ofstream myfile;
   myfile.open ("example.txt");
@@ -88,41 +90,44 @@ int main() {
   double result;
   cout << "Welcome to the C++ small calculator \n";
   int selection = 0; 
-  queue<double> stack;
+  queue<double> stack;          //Here we create a Queue - Ignore the name of it. it was a stack before and I found that a Queue works better. 
   while (selection == 0){
     stack = empty_stack(stack);
     cout << "\n Please select the number of the operation you'd like to perform: \n";
-    cout << " 1-Suma \n 2-Resta \n 3-Multiplicacion \n 4-Division \n 5-Close tool \n Enter the digit: ";
+    cout << " 1- Add \n 2-Substract \n 3-Multiply \n 4-Division \n 5-Close tool \n Enter the digit: ";
     cin >> selection;
 
     if (selection == 1 )
     { 
-      stack = stacker(stack);
-      result = adding(stack);
-      cout << "The answer is: "  <<  result << "\n";
-      record (result);
+      stack = stacker(stack);               //here we add all numebres needed for the operation, 
+      result = adding(stack);               //once all numbers are input, we add them
+      cout << "The answer is: "  <<  result << "\n";    //we print the answer to the console
+      record (result);                      //record the result in the text file
     }
     else if(selection == 2){
       stack = stacker(stack);
       result = subtract(stack);
       cout << "The answer is: "  <<  result << "\n";
+      record (result);
     }
     else if (selection == 3){
       stack = stacker(stack);
       result = multiply(stack);
       cout << "The answer is: "  <<  result << "\n";
+      record (result);
     }
     else if (selection == 4){
       stack = stacker(stack);
       result = divition(stack);
       cout << "The answer is: "  <<  result << "\n";
+      record (result);
     }
     else if (selection == 5){
       cout << "Thanks for using this tool. Have a nice day.";
       break;
     }
     else{
-      cout << "Error, Please select the correct options \n";
+      cout << "Error, Please select the correct options \n";          //in case the user selectes a wrong option, this messague will appear
     }
   selection = 0;
 
