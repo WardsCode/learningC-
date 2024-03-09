@@ -7,7 +7,7 @@ This calculator is simple. It first ask the user for which baisc operation would
 AS I previouly mention. I wanted to learn the basic principles of C++ and start creating my own logical reasoning with it. 
 
 
-[Software Demo Video](hhttps://youtu.be/TKM-Sqxxf5k)
+[Software Demo Video](https://youtu.be/TKM-Sqxxf5k)
 
 # Development Environment
 
